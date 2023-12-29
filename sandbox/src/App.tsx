@@ -3,9 +3,9 @@ import Post from './components/Post'
 function App() {
   return (
     <main>
-      <Post />
-      <Post />
-      <Post />
+      <Post author="melvyn" body="hey its me" />
+      <Post author="bass guy" body="I love bass" />
+      <Post author="melvyn" body="React is easy!" />
     </main>
   )
 }

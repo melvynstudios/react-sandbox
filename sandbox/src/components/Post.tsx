@@ -1,11 +1,12 @@
-const names = ['Melvyn', 'Guy who plays BASS']
+type PostProps = {
+	author: string;
+	body: string;
+}
 
-function Post() {
-	// Add randomness to displaying my name
-	const randName = Math.random() > 0.5 ? names[0] : names[1];
+function Post(props: PostProps) {
 	return <div>
-		<p>{ randName }</p>
-		<p>React with Typescript is so groovy!</p>
+		<p>{ props.author }</p>
+		<p>{ props.body }</p>
 	</div>
 }
 
