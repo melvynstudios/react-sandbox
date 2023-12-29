@@ -1,5 +1,6 @@
 import Post from "./Post";
 import { PostProps } from "./Post";
+import NewPost from "./NewPost";
 import styled from 'styled-components';
 
 // Styled Components allows us to embed CSS into the tsx files like we do with VUE
@@ -23,13 +24,16 @@ const allPosts: PostProps[] = [
 
 function PostList() {
 	return (
-		<StyledList>
-			{allPosts.map((p, i) => (
-				<li key={i}>
-					<Post author={p.author} body={p.body}/>
-				</li>
-			))}
-		</StyledList>
+		<div>
+			<NewPost />
+			<StyledList>
+				{allPosts.map((p, i) => (
+					<li key={i}>
+						<Post author={p.author} body={p.body}/>
+					</li>
+				))}
+			</StyledList>
+		</div>
 	)
 
 }
