@@ -6,9 +6,6 @@ const StyledForm = styled.form`
 	background-color: #6233b9;
 	padding: 1rem;
 	width: 20rem;
-	margin: 2rem auto;
-	border-radius: 6px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
 	label {
 		display: block;

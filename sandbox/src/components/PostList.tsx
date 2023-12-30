@@ -1,6 +1,7 @@
 import Post from "./Post";
 import { PostProps } from "./Post";
 import NewPost from "./NewPost";
+import Modal from "./Modal";
 import styled from 'styled-components';
 import React, { useState } from 'react';
 
@@ -32,8 +33,13 @@ function PostList() {
 		// Use the set function to update the state data.
 		// setPostBody(event.target.value)
 	// }
+	const [ showModal, setModalVisable] = useState(true);
 	const [newPostBody, setPostBody] = useState('')
 	const [newPostAuthor, setAuthor] = useState('')
+
+	function hideModalHandler(event: React.MouseEvent<HTMLDivElement>) {
+		setModalVisable(false);
+	}
 
 	function  bodyChangeHandler(event: React.ChangeEvent<HTMLTextAreaElement>) {
 		setPostBody(event.target.value);
@@ -44,7 +50,9 @@ function PostList() {
 	}
 	return (
 		<div>
-			<NewPost onBodyChange={bodyChangeHandler} onAuthorChange={authorChangeHandler} />
+			<Modal onBGClick={hideModalHandler} showModal={showModal} >
+				<NewPost onBodyChange={bodyChangeHandler} onAuthorChange={authorChangeHandler} />
+			</Modal>
 			<StyledList>
 				<Post author={newPostAuthor} body={newPostBody}/>
 				{allPosts.map((p, i) => (
