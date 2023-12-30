@@ -1,7 +1,6 @@
 // imports that start with use are React Hooks
-import React from 'react';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { PostProps } from "./Post";
 
 const StyledForm = styled.form`
 	background-color: #6233b9;
@@ -60,26 +59,17 @@ const Actions = styled.div`
 
 // You'll see htmlFor instead of For because TSX doesn't use For for this purpose
 // Use the on keyword to add event handlers
-function NewPost() {
-	// useState returns two elements
-	// dataState[0] = current value
-	// dataState[1] = function to update state
-	const [ postBody, setPostBody ] = useState<string>('');
-	function changeBodyHandler(event: React.ChangeEvent<HTMLTextAreaElement>) {
-		// Use the set function to update the state data.
-		setPostBody(event.target.value)
-	}
+function NewPost(PostProps: PostProps) {
 
 	return (
 		<StyledForm>
 			<p>
 				<label htmlFor="body">Text</label>
-				<textarea id="body" required rows={3} onChange={changeBodyHandler} />
+				<textarea id="body" required rows={3} onChange={PostProps.onBodyChange} />
 			</p>
-			<p>{postBody}</p>
 			<p>
 				<label htmlFor="name">Your Name</label>
-				<input type="text" id="name" required />
+				<input type="text" id="name" required onChange={PostProps.onAuthorChange} />
 			</p>
 		</StyledForm>
 	)
