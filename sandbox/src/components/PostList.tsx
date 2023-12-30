@@ -33,7 +33,7 @@ function PostList() {
 		// Use the set function to update the state data.
 		// setPostBody(event.target.value)
 	// }
-	const [ showModal, setModalVisable] = useState(true);
+	const [showModal, setModalVisable] = useState(true);
 	const [newPostBody, setPostBody] = useState('')
 	const [newPostAuthor, setAuthor] = useState('')
 
@@ -50,9 +50,11 @@ function PostList() {
 	}
 	return (
 		<div>
-			<Modal onBGClick={hideModalHandler} showModal={showModal} >
-				<NewPost onBodyChange={bodyChangeHandler} onAuthorChange={authorChangeHandler} />
-			</Modal>
+			{showModal && (
+				<Modal onBGClick={hideModalHandler} >
+					<NewPost onBodyChange={bodyChangeHandler} onAuthorChange={authorChangeHandler} />
+				</Modal>
+			)}
 			<StyledList>
 				<Post author={newPostAuthor} body={newPostBody}/>
 				{allPosts.map((p, i) => (

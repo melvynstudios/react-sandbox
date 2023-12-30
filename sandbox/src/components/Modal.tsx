@@ -3,7 +3,6 @@ import styles from './Modal.module.css'
 
 interface ModalProps {
 	children: ReactNode;
-	showModal: boolean;
 	onBGClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
@@ -12,7 +11,7 @@ interface ModalProps {
 function Modal(props: ModalProps) {
 	return (
 	<div className={styles.backdrop} onClick={props.onBGClick} >
-		<dialog open={props.showModal} className={styles.modal}>
+		<dialog open className={styles.modal}>
 			{props.children}
 		</dialog>
 	</div>
