@@ -1,12 +1,8 @@
-import React from 'react';
 import styles from './Post.module.css';
 
-export type PostProps = {
+export interface PostProps {
 	author: string;
 	body: string;
-
-	onBodyChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-	onAuthorChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 // Sticky Note, we are using CSS Modules approach for this component

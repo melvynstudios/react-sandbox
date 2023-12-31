@@ -11,7 +11,7 @@ interface ModalProps {
 function Modal(props: ModalProps) {
 	return (
 	<div className={styles.backdrop} onClick={props.onBGClick} >
-		<dialog open className={styles.modal}>
+		<dialog open className={styles.modal} onClick={(e) => e.stopPropagation()}>
 			{props.children}
 		</dialog>
 	</div>

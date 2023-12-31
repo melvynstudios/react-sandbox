@@ -24,7 +24,13 @@ const allPosts: PostProps[] = [
 	{ author: "melvyn", body: "React is easy!" }
 ]
 
-function PostList() {
+interface PostListProps {
+	showCreatePost: boolean
+	newPostButton?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+	hideModalHandler?: (event: React.MouseEvent<HTMLDivElement>) => void;
+}
+
+function PostList(props: PostListProps) {
 	// useState returns two elements
 	// dataState[0] = current value
 	// dataState[1] = function to update state
@@ -33,26 +39,21 @@ function PostList() {
 		// Use the set function to update the state data.
 		// setPostBody(event.target.value)
 	// }
-	const [showModal, setModalVisable] = useState(true);
 	const [newPostBody, setPostBody] = useState('')
 	const [newPostAuthor, setAuthor] = useState('')
-
-	function hideModalHandler(event: React.MouseEvent<HTMLDivElement>) {
-		setModalVisable(false);
-	}
 
 	function  bodyChangeHandler(event: React.ChangeEvent<HTMLTextAreaElement>) {
 		setPostBody(event.target.value);
 	}
 
-	function  authorChangeHandler(event: React.ChangeEvent<HTMLTextAreaElement>) {
+	function  authorChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
 		setAuthor(event.target.value);
 	}
 	return (
 		<div>
-			{showModal && (
-				<Modal onBGClick={hideModalHandler} >
-					<NewPost onBodyChange={bodyChangeHandler} onAuthorChange={authorChangeHandler} />
+			{props.showCreatePost && (
+				<Modal onBGClick={props.hideModalHandler} >
+					<NewPost onBodyChange={bodyChangeHandler} onAuthorChange={authorChangeHandler} onCancel={props.hideModalHandler} />
 				</Modal>
 			)}
 			<StyledList>

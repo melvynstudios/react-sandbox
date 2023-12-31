@@ -1,8 +1,14 @@
 import { MdPostAdd, MdMessage } from 'react-icons/md';
 
 import styles from './MainHeader.module.css';
+import React from 'react';
 
-function MainHeader() {
+type PostProps = {
+	// This is an anynomous function that returns a void or nothing
+	onNewPost? : (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+function MainHeader(props: PostProps) {
 	return (
 		<header className={styles.header}>
 			<h1 className={styles.logo}>
@@ -10,7 +16,7 @@ function MainHeader() {
 				React Poster
 			</h1>
 			<p>
-				<button className={styles.button}>
+				<button className={styles.button} onClick={props.onNewPost}>
 					<MdPostAdd size={18} />
 					New Post
 				</button>
